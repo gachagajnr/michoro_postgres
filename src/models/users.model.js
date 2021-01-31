@@ -53,7 +53,7 @@ module.exports = function(app) {
                 allowNull: false,
             },
             styles: {
-                type: DataTypes.ARRAY,
+                type: DataTypes.ARRAY(Sequelize.STRING),
                 allowNull: false,
             },
             role: {
