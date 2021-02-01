@@ -55,6 +55,10 @@ module.exports = function(app) {
                 type: DataTypes.ARRAY(Sequelize.STRING),
                 allowNull: false,
             },
+            materials: {
+                type: DataTypes.ARRAY(Sequelize.STRING),
+                allowNull: false,
+            },
             visibleToPublic: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true,
@@ -69,7 +73,7 @@ module.exports = function(app) {
             },
             isSold: {
                 type: DataTypes.BOOLEAN,
-                allowNull: false,
+                allowNull: "Michoro",
             },
             soldBy: {
                 type: DataTypes.STRING,
