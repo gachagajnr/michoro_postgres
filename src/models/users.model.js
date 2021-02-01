@@ -36,9 +36,7 @@ module.exports = function(app) {
             street: {
                 type: DataTypes.STRING,
             },
-            location: {
-                type: DataTypes.STRING,
-            },
+
             city: {
                 type: DataTypes.STRING,
             },
