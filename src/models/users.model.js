@@ -25,13 +25,13 @@ module.exports = function(app) {
                 allowNull: false,
             },
             phone: {
-                type: DataTypes.NUMBER,
+                type: DataTypes.TEXT,
             },
             location: {
                 type: DataTypes.STRING,
             },
             idnumber: {
-                type: DataTypes.NUMBER,
+                type: DataTypes.TEXT,
             },
             street: {
                 type: DataTypes.STRING,
