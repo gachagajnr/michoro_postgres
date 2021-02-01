@@ -26,73 +26,57 @@ module.exports = function(app) {
             },
             phone: {
                 type: DataTypes.NUMBER,
-                allowNull: false,
             },
             location: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             idnumber: {
                 type: DataTypes.NUMBER,
-                allowNull: false,
             },
             street: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             location: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             city: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             about: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             styles: {
                 type: DataTypes.ARRAY(Sequelize.STRING),
-                allowNull: false,
             },
             role: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                defaultValue: "user",
             },
             info: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             newsletter: {
                 type: DataTypes.BOOLEAN,
-                allowNull: false,
-
+                defaultValue: true,
             },
             //verification
             isVerified: {
                 type: DataTypes.BOOLEAN,
-                allowNull: false,
             },
             verifyToken: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             resetToken: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             verifyExpires: {
                 type: DataTypes.DATE,
-                allowNull: false,
             },
             verifyChanges: {
                 type: DataTypes.JSON,
-                allowNull: false,
             },
             resetExpires: {
                 type: DataTypes.DATE,
-                allowNull: false,
             },
             googleId: { type: DataTypes.STRING },
 
