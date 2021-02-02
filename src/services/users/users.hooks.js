@@ -15,16 +15,6 @@ const {
     protect,
 } = require("@feathersjs/authentication-local").hooks;
 
-// const moreResolver = {
-//   joins: {
-//     cart: () => async (art, context) =>
-//       (art.cart = await context.app.service("arts").find({
-//         query: {
-//           _id: art.cart.items,
-//         },
-//       })),
-//   },
-// };
 
 module.exports = {
     before: {

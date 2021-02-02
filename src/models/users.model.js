@@ -16,13 +16,16 @@ module.exports = function(app) {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            username: {
+                type: DataTypes.STRING,
+            },
             firstname: {
                 type: DataTypes.STRING,
-                allowNull: false,
+
             },
             lastname: {
                 type: DataTypes.STRING,
-                allowNull: false,
+
             },
             phone: {
                 type: DataTypes.TEXT,
