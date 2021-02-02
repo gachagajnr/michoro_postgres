@@ -1,7 +1,6 @@
 const { authenticate } = require("@feathersjs/authentication").hooks;
 const dauria = require("dauria");
 
-const initializeArt = require("../../hooks/initializeArt");
 
 module.exports = {
   before: {
