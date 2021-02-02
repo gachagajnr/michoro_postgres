@@ -20,6 +20,7 @@ module.exports = (options = {}) => {
                     userId: context.params.user.id,
                     length: data.length,
                     width: data.width,
+                    url:'wani',
                     category: data.category,
                     breadth: data.breadth,
                     materials: data.materials,
@@ -31,8 +32,7 @@ module.exports = (options = {}) => {
                 };
             })
             .catch((e) => {
-                console.log(e)
-                throw new Error("Not successful");
+                 throw new Error("Not successful");
             });
 
         return context;

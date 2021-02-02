@@ -8,7 +8,7 @@ const authorResolver = {
       (agent.author = (
         await context.app.service("users").find({
           query: {
-            _id: agent.author,
+            id: agent.userId,
             $select: ["firstname", "lastname", "about"],
           },
           paginate: false,
@@ -51,7 +51,7 @@ module.exports = {
   after: {
     all: [fastJoin(authorResolver)],
     find: [],
-    get: [fastJoin(moreResolver)],
+    get: [],
     create: [],
     update: [],
     patch: [],
