@@ -5,11 +5,10 @@
 module.exports = (options = {}) => {
     return async(context) => {
         const { app, data, params } = context;
-
-        if (!data) {
+         if (!data) {
             throw new Error("no data");
         }
-        await app
+         await app
             .service("uploads")
             .create({ uri: data.uri })
             .then((res) => {
@@ -18,7 +17,7 @@ module.exports = (options = {}) => {
                     price: data.price,
                     description: data.description,
                     orientation: data.orientation,
-                    author: context.params.user,
+                    userId: context.params.user.id,
                     length: data.length,
                     width: data.width,
                     category: data.category,

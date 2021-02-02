@@ -1,24 +1,61 @@
-
-
+const { authenticate } = require("@feathersjs/authentication").hooks;
+const { fastJoin } = require("feathers-hooks-common");
+const search = require("feathers-mongodb-fuzzy-search");
+const uploadArt = require("../../hooks/upload-art");
+const authorResolver = {
+  joins: {
+    author: (...args) => async (agent, context) =>
+      (agent.author = (
+        await context.app.service("users").find({
+          query: {
+            _id: agent.author,
+            $select: ["firstname", "lastname", "about"],
+          },
+          paginate: false,
+        })
+      )[0]),
+  },
+};
+const moreResolver = {
+  joins: {
+    moreWorks: () => async (art, context) =>
+      (art.moreWorks = await context.app.service("arts").find({
+        query: {
+          author: art.author,
+          //paginate: false
+        },
+      })),
+    topPicks: () => async (art, context) =>
+      (art.topPicks = await context.app.service("arts").find({
+        query: {
+          $or: [{ category: art.category }, { price: art.price }],
+          // author: art.author,
+          //paginate: false
+        },
+      })),
+  },
+};
 module.exports = {
   before: {
-    all: [],
+    all: [
+      // search({ escape: false }),
+    ],
     find: [],
     get: [],
-    create: [],
+    create: [uploadArt()],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   after: {
-    all: [],
+    all: [fastJoin(authorResolver)],
     find: [],
-    get: [],
+    get: [fastJoin(moreResolver)],
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   error: {
@@ -28,6 +65,6 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
+    remove: [],
+  },
 };

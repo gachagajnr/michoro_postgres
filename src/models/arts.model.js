@@ -9,55 +9,55 @@ module.exports = function(app) {
         "arts", {
             name: {
                 type: DataTypes.TEXT,
-                allowNull: false,
+                // allowNull: false,
             },
             price: {
                 type: DataTypes.TEXT,
-                allowNull: false,
+                // allowNull: false,
             },
             description: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             length: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             width: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             breadth: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             mediums: {
                 type: DataTypes.ARRAY(Sequelize.STRING),
-                allowNull: false,
+                // allowNull: false,
             },
             keywords: {
                 type: DataTypes.ARRAY(Sequelize.STRING),
-                allowNull: false,
+                // allowNull: false,
             },
             category: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             orientation: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             subjects: {
                 type: DataTypes.ARRAY(Sequelize.STRING),
-                allowNull: false,
+                // allowNull: false,
             },
             styles: {
                 type: DataTypes.ARRAY(Sequelize.STRING),
-                allowNull: false,
+                // allowNull: false,
             },
             materials: {
                 type: DataTypes.ARRAY(Sequelize.STRING),
-                allowNull: false,
+                // allowNull: false,
             },
             visibleToPublic: {
                 type: DataTypes.BOOLEAN,
@@ -65,11 +65,11 @@ module.exports = function(app) {
             },
             art: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             url: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
             isSold: {
                 type: DataTypes.BOOLEAN,
@@ -77,7 +77,7 @@ module.exports = function(app) {
             },
             soldBy: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
             },
         }, {
             hooks: {
