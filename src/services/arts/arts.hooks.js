@@ -21,7 +21,8 @@ const moreResolver = {
     moreWorks: () => async (art, context) =>
       (art.moreWorks = await context.app.service("arts").find({
         query: {
-          author: art.author,
+          userId: art.userId,
+          
           //paginate: false
         },
       })),
@@ -51,7 +52,7 @@ module.exports = {
   after: {
     all: [fastJoin(authorResolver)],
     find: [],
-    get: [],
+    get: [fastJoin(moreResolver)],
     create: [],
     update: [],
     patch: [],
