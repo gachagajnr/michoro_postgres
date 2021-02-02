@@ -26,7 +26,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [initializeArt()],
+    create: [],
     update: [],
     patch: [],
     remove: [],
