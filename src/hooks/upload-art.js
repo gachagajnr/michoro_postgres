@@ -27,11 +27,11 @@ module.exports = (options = {}) => {
                     mediums: data.mediums,
                     styles: data.styles,
                     subjects: data.subjects,
-
                     art: res.id,
                 };
             })
             .catch((e) => {
+                console.log(e)
                 throw new Error("Not successful");
             });
 
