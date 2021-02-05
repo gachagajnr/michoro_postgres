@@ -44,5 +44,5 @@
             }
         }
     },
-    "postgres": "postgres://michoro:michoro2A@michoro-postgres.cnldiwve0yug.us-east-2.rds.amazonaws.com/michoro"
+    "postgres": "postgres://michoro:michoro2A@michoro-postgres.cnldiwve0yug.us-east-2.rds.amazonaws.com:5432/michoro"
 }
