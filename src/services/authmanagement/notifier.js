@@ -1,6 +1,6 @@
 const path = require('path');
 const pug = require('pug');
- 
+  
 module.exports = function (app) {
 
 
@@ -32,7 +32,7 @@ module.exports = function (app) {
   return {
     notifier: function (type, user, notifierOptions) {
       let hashLink;
-      
+      var logoLink='https://michoroarts.s3.us-east-2.amazonaws.com/logo.png'
       let email, sms;
       var emailAccountTemplatesPath = path.join(app.get('src'), 'email-templates', 'account')
       var templatePath;
@@ -44,7 +44,7 @@ module.exports = function (app) {
           templatePath = path.join(emailAccountTemplatesPath, 'verify-email.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
-            logo: '',
+            logo: logoLink,
             name: user.firstname || user.email,
             hashLink,
             returnEmail
@@ -66,7 +66,7 @@ module.exports = function (app) {
           templatePath = path.join(emailAccountTemplatesPath, 'email-verified.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
-            logo: '',
+            logo:  logoLink,
             name: user.firstname || user.email,
             hashLink,
             returnEmail
@@ -86,7 +86,7 @@ module.exports = function (app) {
           templatePath = path.join(emailAccountTemplatesPath, 'reset-password.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
-            logo: '',
+            logo: logoLink,
             name: user.firstname || user.email,
             hashLink,
             returnEmail
@@ -106,7 +106,7 @@ module.exports = function (app) {
           templatePath = path.join(emailAccountTemplatesPath, 'password-was-reset.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
-            logo: '',
+            logo: logoLink,
             name: user.firstname || user.email,
             hashLink,
             returnEmail
@@ -125,7 +125,7 @@ module.exports = function (app) {
           templatePath = path.join(emailAccountTemplatesPath, 'password-change.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
-            logo: '',
+            logo: logoLink,
             name: user.firstname || user.email,
             returnEmail
           })
@@ -144,7 +144,7 @@ module.exports = function (app) {
           templatePath = path.join(emailAccountTemplatesPath, 'identity-change.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
-            logo: '',
+            logo: logoLink,
             name: user.firstname || user.email,
             hashLink,
             returnEmail,
