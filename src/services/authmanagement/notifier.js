@@ -1,11 +1,10 @@
 const path = require('path');
 const pug = require('pug');
-const returnEmail = process.env.COMPLAINT_EMAIL
-
+ 
 module.exports = function (app) {
 
 
-  const returnEmail = app.get('complaint_email') || process.env.COMPLAINT_EMAIL
+  const returnEmail = 'michoro.ke@gmail.com'
   function getLink(type, hash) {
     const url = "https://michoro.com/" + type + "?token=" + hash;
     return url;
