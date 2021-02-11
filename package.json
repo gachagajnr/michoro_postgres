@@ -1,5 +1,5 @@
 {
-    "name": "michoro-server-postgrs",
+    "name": "michoro-server-postgres",
     "description": "",
     "version": "0.0.0",
     "homepage": "",
@@ -20,7 +20,7 @@
         "config": "config/"
     },
     "engines": {
-        "node": "^10.0.0",
+        "node": "^10.12.0",
         "npm": ">= 3.0.0"
     },
     "scripts": {
@@ -59,14 +59,15 @@
         "feathers-mailer": "^3.0.1",
         "feathers-mongodb-fuzzy-search": "^2.0.1",
         "feathers-mongoose": "^8.3.1",
-        "fs-blob-store": "^5.2.1",
         "feathers-sequelize": "^6.2.0",
+        "fs-blob-store": "^5.2.1",
         "helmet": "^4.4.1",
-        "pg": "^8.5.1",
-        "sequelize": "^6.5.0",
         "multer": "^1.4.2",
         "nodemailer-pepipost-transport": "^0.4.0",
+        "pg": "^8.5.1",
+        "pug": "^3.0.0",
         "s3-blob-store": "^4.1.1",
+        "sequelize": "^6.5.0",
         "serve-favicon": "^2.5.0",
         "winston": "^3.3.3"
     },

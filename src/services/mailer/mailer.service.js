@@ -14,7 +14,7 @@ module.exports = function(app) {
         Mailer(
             pP({
                 auth: {
-                    api_key: "461475d3b9db465bb1e4f48e73cf4872",
+                    api_key: "b16cd7f623e23a292989675cfbd8879e",
                 },
             })
         )

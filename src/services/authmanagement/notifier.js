@@ -1,4 +1,10 @@
+const path = require('path');
+const pug = require('pug');
+
+
 module.exports = function (app) {
+
+
   function getLink(type, hash) {
     const url = "https://michoro.com/" + type + "?token=" + hash;
     return url;
@@ -26,28 +32,37 @@ module.exports = function (app) {
   return {
     notifier: function (type, user, notifierOptions) {
       let tokenLink;
+      
       let email, sms;
-      switch (type) {
+      var emailAccountTemplatesPath = path.join(app.get('src'), 'email-templates', 'account')
+      var templatePath;
+      var compiledHTML;
+            switch (type) {
         case "resendVerifySignup": //sending the user the verification email
           tokenLink = getLink("verify", user.verifyToken);
+
+          templatePath = path.join(emailAccountTemplatesPath, 'password-reset.pug')
+
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: '',
+            name: user.name || user.email,
+            tokenLink,
+            
+          })
           email = {
-            from: "SendVerifyEmail@pepisandbox.com",
+            from: "Michoro Art info@michoro.com",
             to: [user.email],
             subject: "Verify Signup",
-            html: tokenLink,
+            html: compiledHTML,
           };
-          sms = {
-            from: "MICHOROART",
-            to: user.phone,
-            message: `Your Mobile Verification pin is ${user.verifyShortToken}`,
-          };
+          
           return sendEmail(email)  ;
           break;
 
         case "verifySignup": // confirming verification
           tokenLink = getLink("verify", user.verifyToken);
           email = {
-            from: "VerifysignUpSuccess@pepisandbox.com",
+            from: "MichoroArt@michoro.com",
             to: [user.email],
             subject: "Confirm Signup",
             html: "Thanks for verifying your email",
