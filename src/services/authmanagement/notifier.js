@@ -1,10 +1,11 @@
 const path = require('path');
 const pug = require('pug');
-
+const returnEmail = process.env.COMPLAINT_EMAIL
 
 module.exports = function (app) {
 
 
+  const returnEmail = app.get('complaint_email') || process.env.COMPLAINT_EMAIL
   function getLink(type, hash) {
     const url = "https://michoro.com/" + type + "?token=" + hash;
     return url;
@@ -31,7 +32,7 @@ module.exports = function (app) {
 
   return {
     notifier: function (type, user, notifierOptions) {
-      let tokenLink;
+      let hashLink;
       
       let email, sms;
       var emailAccountTemplatesPath = path.join(app.get('src'), 'email-templates', 'account')
@@ -39,20 +40,21 @@ module.exports = function (app) {
       var compiledHTML;
             switch (type) {
         case "resendVerifySignup": //sending the user the verification email
-          tokenLink = getLink("verify", user.verifyToken);
+          hashLink = getLink("verify", user.verifyToken);
 
-          templatePath = path.join(emailAccountTemplatesPath, 'password-reset.pug')
+          templatePath = path.join(emailAccountTemplatesPath, 'verify-email.pug')
 
           compiledHTML = pug.compileFile(templatePath)({
             logo: '',
-            name: user.name || user.email,
-            tokenLink,
+            name: user.firstname || user.email,
+            hashLink,
+            returnEmail
             
           })
           email = {
             from: "Michoro Art info@michoro.com",
             to: [user.email],
-            subject: "Verify Signup",
+            subject: "Confirm Signup",
             html: compiledHTML,
           };
           
@@ -60,46 +62,101 @@ module.exports = function (app) {
           break;
 
         case "verifySignup": // confirming verification
-          tokenLink = getLink("verify", user.verifyToken);
+          hashLink = getLink('verify', user.verifyToken)
+
+          templatePath = path.join(emailAccountTemplatesPath, 'email-verified.pug')
+
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: '',
+            name: user.firstname || user.email,
+            hashLink,
+            returnEmail
+          })
           email = {
-            from: "MichoroArt@michoro.com",
+            from: "Michoro Art info@michoro.com",
             to: [user.email],
-            subject: "Confirm Signup",
-            html: "Thanks for verifying your email",
+            subject: 'Thank you, your email has been verified',
+            html: compiledHTML,
           };
           return sendEmail(email);
           break;
 
         case "sendResetPwd":
-          tokenLink = getLink("reset", user.resetToken);
+          hashLink = getLink('reset', user.resetToken)
+
+          templatePath = path.join(emailAccountTemplatesPath, 'reset-password.pug')
+
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: '',
+            name: user.firstname || user.email,
+            hashLink,
+            returnEmail
+          })
           email = {
-            from: "Forgotpassword@pepisandbox.com",
+            from: "Michoro Art info@michoro.com",
             to: [user.email],
-            subject: "Reset Password Request",
-            html: tokenLink,
+            subject: 'Reset Password',
+            html: compiledHTML,
           };
           return sendEmail(email);
           break;
 
         case "resetPwd":
-          tokenLink = getLink("reset", user.resetToken);
+          hashLink = getLink('reset', user.resetToken)
+
+          templatePath = path.join(emailAccountTemplatesPath, 'password-was-reset.pug')
+
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: '',
+            name: user.firstname || user.email,
+            hashLink,
+            returnEmail
+          })
           email = {
-            from: "ResetpasswordSuccess@pepisandbox.com",
+            from: "Michoro Art info@michoro.com",
             to: [user.email],
-            subject: "Reset Password",
-            html: "Your Password has been changed successfully",
+            subject: 'Your password was reset',
+            html: compiledHTML,
           };
           return sendEmail(email);
           break;
 
         case "passwordChange":
-          email = {};
+
+          templatePath = path.join(emailAccountTemplatesPath, 'password-change.pug')
+
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: '',
+            name: user.firstname || user.email,
+            returnEmail
+          })
+          email = {
+            from: "Michoro Art info@michoro.com",
+            to: [user.email],
+            subject:  'Your password was changed',
+            html: compiledHTML,
+          };
           return sendEmail(email);
           break;
 
         case "identityChange":
-          tokenLink = getLink("verifyChanges", user.verifyToken);
-          email = {};
+          hashLink = getLink('verifyChanges', user.verifyToken)
+
+          templatePath = path.join(emailAccountTemplatesPath, 'identity-change.pug')
+
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: '',
+            name: user.firstname || user.email,
+            hashLink,
+            returnEmail,
+            changes: user.verifyChanges
+          })
+          email = {
+            from: "Michoro Art info@michoro.com",
+            to: [user.email],
+            subject:  'Your account was changed. Please verify the changes',
+            html: compiledHTML,
+          };
           return sendEmail(email);
           break;
 
