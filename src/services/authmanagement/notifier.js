@@ -23,6 +23,7 @@ module.exports = function (app) {
       .create(email)
       .then(function (result) {
         console.log("Sent email", result);
+        // return app.service('mails').create(result);
       })
       .catch((err) => {
         console.log("Error sending email", err);
