@@ -7,6 +7,13 @@ module.exports = function(app) {
     const sequelizeClient = app.get("sequelizeClient");
     const users = sequelizeClient.define(
         "users", {
+            _id: {
+                type: Sequelize.UUID,
+                unique: true,
+                primaryKey: true,
+                isUUID: 4,
+                defaultValue: Sequelize.UUIDV4
+              },
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,

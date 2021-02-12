@@ -17,7 +17,7 @@ module.exports = (options = {}) => {
                     price: data.price,
                     description: data.description,
                     orientation: data.orientation,
-                    userId: context.params.user.id,
+                    userId: context.params.user._id,
                     length: data.length,
                     width: data.width,
                     url:'wani',

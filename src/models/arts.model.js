@@ -7,6 +7,13 @@ module.exports = function(app) {
     const sequelizeClient = app.get("sequelizeClient");
     const arts = sequelizeClient.define(
         "arts", {
+            _id: {
+                type: Sequelize.UUID,
+                unique: true,
+                primaryKey: true,
+                isUUID: 4,
+                defaultValue: Sequelize.UUIDV4
+              },
             name: {
                 type: DataTypes.TEXT,
                 // allowNull: false,
@@ -73,11 +80,11 @@ module.exports = function(app) {
             },
             isSold: {
                 type: DataTypes.BOOLEAN,
-                allowNull: "Michoro",
+                defaultValue: false,
             },
             soldBy: {
                 type: DataTypes.STRING,
-                // allowNull: false,
+                defaultValue: 'Michoro',
             },
         }, {
             hooks: {

@@ -8,7 +8,7 @@ const authorResolver = {
       (agent.author = (
         await context.app.service("users").find({
           query: {
-            id: agent.userId,
+            _id: agent.userId,
             $select: ["firstname", "lastname", "about"],
           },
           paginate: false,
