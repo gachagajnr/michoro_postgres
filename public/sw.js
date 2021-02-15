@@ -14,7 +14,7 @@ var __wpo = {
       "/npm.material-ui.f1304f6dfef65b6df6af.chunk.js",
       "/npm.ant-design.0218502dfab56d5cf3b9.chunk.js",
       "/npm.intl.d600b589a6d8230522c5.chunk.js",
-      "/main.a636ccfbaddf1aea9696.chunk.js",
+      "/main.19925102cd3c3d82d3de.chunk.js",
       "/npm.babel.dde3a584b2c04e7759c1.chunk.js",
       "/npm.core-js.6bd96e61b65c546d0cdc.chunk.js",
       "/npm.feathersjs.4ef8743c871b59e57728.chunk.js",
@@ -69,7 +69,7 @@ var __wpo = {
     "aca28ecfc75c07e5d9c15c58534247be13f12ef7": "/npm.material-ui.f1304f6dfef65b6df6af.chunk.js",
     "b139f043feda2b784423bd94629466d923826232": "/npm.ant-design.0218502dfab56d5cf3b9.chunk.js",
     "24421e55628b8f84ea6ebe24e32164a4578d473a": "/npm.intl.d600b589a6d8230522c5.chunk.js",
-    "2a8b3d76d5187212f9cbc41f4d303c776b151ac4": "/main.a636ccfbaddf1aea9696.chunk.js",
+    "23d3d537c25ea5922cac952473152fbe2733b6c4": "/main.19925102cd3c3d82d3de.chunk.js",
     "cb03b0107addf8469a3202c06838c7f1dd883926": "/npm.babel.dde3a584b2c04e7759c1.chunk.js",
     "cbcf760993971e95786735c9369fe6c8f87cf4a4": "/npm.core-js.6bd96e61b65c546d0cdc.chunk.js",
     "3b7733296a8101552a508e68a5c1d9b4c4e30275": "/npm.feathersjs.4ef8743c871b59e57728.chunk.js",
@@ -111,11 +111,11 @@ var __wpo = {
     "e1c74fd5e1a707bf77edb57e320071b2805666bd": "/47.b7a12c8b5f405466ee08.chunk.js",
     "7641a55d18a90c673b170a16143006cce494d187": "/48.cd06be3c10ca1f6ceaa0.chunk.js",
     "547faacb1f3f859a900eb904fc468c803a25fe3f": "/49.c405b5c69cce9efe901f.chunk.js",
-    "aa62b2709c9facd6d803fc26d764ce129c236026": "/"
+    "a4ee0e1632b33964c2ca215f059d51bab9028d5b": "/"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "2/12/2021, 4:54:18 PM",
+  "version": "2/14/2021, 12:10:26 PM",
   "name": "webpack-offline",
   "pluginVersion": "5.0.6",
   "relativePaths": false
