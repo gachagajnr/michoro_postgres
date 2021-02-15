@@ -32,7 +32,7 @@ module.exports = (options = {}) => {
                 };
             })
             .catch((e) => {
-                 throw new Error("Not successful");
+                 throw new Error("Publishing Not successful");
             });
 
         return context;
