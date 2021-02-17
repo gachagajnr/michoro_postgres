@@ -12,6 +12,7 @@
         "name": "william",
         "email": "williampius17@gmail.com"
     },
+    "proxy": "http://localhost:3030/",
     "contributors": [],
     "bugs": {},
     "directories": {

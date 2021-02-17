@@ -22,7 +22,16 @@ const sequelize = require('./sequelize');
 
 const app = express(feathers());
 require("dotenv").config();
-
+ 
+app.get('/test/hello', (req, res) => {
+  res.send({ express: 'Hello From Express' });
+});
+app.post('/test/world', (req, res) => {
+  console.log(req.body);
+  res.send(
+    `I received your POST request. This is what you sent me: ${req.body.post}`,
+  );
+});
 // Load app configuration
 app.configure(configuration());
 // Enable security, CORS, compression, favicon and body parsing
@@ -40,7 +49,6 @@ app.use('/', express.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(express.rest());
 app.configure(socketio());
-
 app.configure(sequelize);
 
 // Configure other middleware (see `middleware/index.js`)

@@ -18,7 +18,7 @@ function subjectName(subject) {
 function defineAbilitiesFor(user) {
     const { rules, can } = AbilityBuilder.extract();
 
-    can("create", ["users"]);
+    can("create", ["users","test"]);
     can("create", ["mailing-list"]);
 
     can("read", ["arts"]);
