@@ -23,11 +23,11 @@ const sequelize = require('./sequelize');
 const app = express(feathers());
 require("dotenv").config();
  
-app.get('/test/hello', (req, res) => {
+app.get('/tes/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
-app.post('/test/world', (req, res) => {
-  console.log(req.body);
+app.post('/new', (req, res) => {
+  console.log("AAAAAAAAAAAA",req);
   res.send(
     `I received your POST request. This is what you sent me: ${req.body.post}`,
   );

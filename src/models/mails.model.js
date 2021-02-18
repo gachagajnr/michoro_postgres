@@ -13,9 +13,9 @@ module.exports = function (app) {
       isUUID: 4,
       defaultValue: Sequelize.UUIDV4
     },
-    text: {
+    service_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      // allowNull: false
     }
   }, {
     hooks: {
