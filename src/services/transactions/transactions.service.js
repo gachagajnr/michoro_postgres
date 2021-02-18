@@ -10,7 +10,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/transactions', new Transactions(options, app));
+  app.use('/transactions',function(req, res, next) {
+    console.log(req,res)
+    next();
+  }, new Transactions(options, app));
 
   // Get our initialized service so that we can register hooks
   const service = app.service('transactions');

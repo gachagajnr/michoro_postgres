@@ -10,7 +10,6 @@ const configuration = require('@feathersjs/configuration');
 const express = require('@feathersjs/express');
 const socketio = require('@feathersjs/socketio');
 
-
 const middleware = require('./middleware');
 const services = require('./services');
 const appHooks = require('./app.hooks');
@@ -23,15 +22,6 @@ const sequelize = require('./sequelize');
 const app = express(feathers());
 require("dotenv").config();
  
-app.get('/tes/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-app.post('/new', (req, res) => {
-  console.log("AAAAAAAAAAAA",req);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
 // Load app configuration
 app.configure(configuration());
 // Enable security, CORS, compression, favicon and body parsing

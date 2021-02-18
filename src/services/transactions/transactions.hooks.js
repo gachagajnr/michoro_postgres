@@ -3,7 +3,9 @@
 module.exports = {
   before: {
     all: [
-     
+      function (context){
+        console.log("CONTEXT ALL",context.data)
+      }
     ],
     find: [],
     get: [],
