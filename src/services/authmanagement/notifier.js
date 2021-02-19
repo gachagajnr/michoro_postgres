@@ -177,27 +177,35 @@ module.exports = function (app) {
           };
           return sendEmail(email);
           break;
-        case "sendOrderConfirmation":
-          hashLink = getLink("verifyChanges", user.verifyToken);
 
+        case "sendOrderConfirmation":
+         
           templatePath = path.join(
             emailAccountTemplatesPath,
-            "identity-change.pug"
+            "order-confirmed.pug"
           );
 
           compiledHTML = pug.compileFile(templatePath)({
             logo: logoLink,
             name: user.firstname || user.email,
-            hashLink,
             returnEmail,
-            changes: user.verifyChanges,
+            orderId: user.orderId
+           
           });
           email = {
             from: "Michoro Art info@michoro.com",
             to: [user.email],
-            subject: "Your account was changed. Please verify the changes",
+            subject: `Your order at Michoro Art has been placed`,
             html: compiledHTML,
           };
+          sms = {
+            from: "MICHOROART",
+            to: user.paying ,
+            message: `Your order has been placed successfully.Your Order ID is ${user.orderId}. Keep this as it will be used to identify the order you placed`,
+          };
+
+          return sendEmail(email) && sendSms(sms);
+          break;
         default:
           break;
       }

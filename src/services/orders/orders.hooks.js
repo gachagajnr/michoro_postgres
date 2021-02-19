@@ -1,8 +1,7 @@
+const processOrder = require("../../hooks/process-order");
+const accountService = require("../authmanagement/notifier");
 
-
-const processOrder = require('../../hooks/process-order');
-
-const sendOrderConfirmation = require('../../hooks/send-order-confirmation');
+const sendOrderConfirmation = require("../../hooks/send-order-confirmation");
 
 module.exports = {
   before: {
@@ -12,17 +11,26 @@ module.exports = {
     create: [processOrder()],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   after: {
     all: [],
     find: [],
     get: [],
-    create: [sendOrderConfirmation()],
+    create: [
+      sendOrderConfirmation(),
+      (context) => {
+        accountService(context.app).notifier(
+          "sendOrderConfirmation",
+          context.result
+        );
+      },
+      
+    ],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   error: {
@@ -32,6 +40,6 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
+    remove: [],
+  },
 };

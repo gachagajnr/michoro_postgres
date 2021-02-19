@@ -6,11 +6,12 @@ const accountService = require("../../src/services/authmanagement/notifier");
 module.exports = (options = {}) => {
   return async (context) => {
     const { result, app } = context;
-
+   
     result.arts.forEach(function (item, index) {
-      return app.service("arts").patch(art, { isSold: true });
+      // return app.service("arts").patch(item, { isSold: true });
     });
-     accountService(app).notifier("sendOrderConfirmation", result);
+   
+
     return context;
   };
 };
