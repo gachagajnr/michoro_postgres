@@ -1,22 +1,12 @@
-
-
 module.exports = {
   before: {
-    all: [
-      function (context){
-        console.log("CONTEXT ALL",context.data)
-      }
-    ],
+    all: [],
     find: [],
     get: [],
-    create: [
-      function (context){
-        console.log("CONTEXT TEST",context.data)
-      }
-    ],
+    create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   after: {
@@ -26,7 +16,7 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
   },
 
   error: {
@@ -36,6 +26,6 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
+    remove: [],
+  },
 };
