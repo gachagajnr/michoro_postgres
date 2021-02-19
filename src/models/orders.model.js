@@ -15,11 +15,14 @@ module.exports = function (app) {
         isUUID: 4,
         defaultValue: Sequelize.UUIDV4,
       },
+      orderId: {
+        type: DataTypes.STRING,
+      },
       paidBy: {
         type: DataTypes.STRING,
       },
       amount: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       arts: {
         type: DataTypes.ARRAY(Sequelize.STRING),

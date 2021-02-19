@@ -11,7 +11,7 @@ module.exports = (options = {}) => {
 
     const res = await app.service("transactions").find({
       query: {
-        amount: `${data.amount}.${"00"}`,
+        amount: `${data.amount}.0`,
         sender_phone: data.paying,
         $limit: 1,
         $sort: {
@@ -19,7 +19,13 @@ module.exports = (options = {}) => {
         },
       },
     });
-
+    function getUniqueID() {
+      for (var i = 0; i < 5; i++)
+       return Date.now() + (Math.random() * 100000).toFixed();
+    }
+    if(res.total !==1){
+      throw new Error("Matching Transaction Not Found");
+    }
     if (res.data[0]._id) {
       context.data = {
         paidBy: `${res.data[0].first_name} ${res.data[0].middle_name} ${res.data[0].last_name}`,
@@ -34,11 +40,11 @@ module.exports = (options = {}) => {
         city: data.city,
         paying: data.paying,
         phone: data.phone,
+        orderId: getUniqueID(),
       };
     } else {
       throw new Error("Transaction Not Found");
     }
-     
 
     return context;
   };

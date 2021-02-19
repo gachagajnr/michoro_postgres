@@ -50,7 +50,7 @@ module.exports = function (app) {
         type: DataTypes.STRING,
       },
       amount: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       currency: {
         type: DataTypes.STRING,

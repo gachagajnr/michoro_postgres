@@ -2,6 +2,8 @@
 
 const processOrder = require('../../hooks/process-order');
 
+const sendOrderConfirmation = require('../../hooks/send-order-confirmation');
+
 module.exports = {
   before: {
     all: [],
@@ -17,7 +19,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [sendOrderConfirmation()],
     update: [],
     patch: [],
     remove: []
