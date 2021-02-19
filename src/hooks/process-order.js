@@ -21,12 +21,12 @@ module.exports = (options = {}) => {
     });
     function getUniqueID() {
       for (var i = 0; i < 5; i++)
-       return Date.now() + (Math.random() * 100000).toFixed();
+        return Date.now() + (Math.random() * 100000).toFixed();
     }
-    if(res.total !==1){
+    if (res.total !== 1) {
       throw new Error("Matching Transaction Not Found");
     }
-    if (res.data[0]._id) {
+    if (res.data[0]._id)
       context.data = {
         paidBy: `${res.data[0].first_name} ${res.data[0].middle_name} ${res.data[0].last_name}`,
         transaction_ref_no: res.data[0].transaction_reference,
@@ -42,9 +42,6 @@ module.exports = (options = {}) => {
         phone: data.phone,
         orderId: getUniqueID(),
       };
-    } else {
-      throw new Error("Transaction Not Found");
-    }
 
     return context;
   };

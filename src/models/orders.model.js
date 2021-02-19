@@ -17,6 +17,7 @@ module.exports = function (app) {
       },
       orderId: {
         type: DataTypes.STRING,
+        unique:true
       },
       paidBy: {
         type: DataTypes.STRING,
