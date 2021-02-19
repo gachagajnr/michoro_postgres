@@ -10,7 +10,10 @@ module.exports = function (app) {
   async function sendSms(sms) {
     try {
       const res = await app.service("sms").create(sms);
-      console.log("SMS SENT SUCCESSFULLY", res);
+      if (res.message)
+        app
+          .service("sms-sent")
+          .create({ from: sms.from, to: sms.to, message: sms.message });
     } catch (error) {
       console.log("SMS SENDING FAILED", error);
     }
@@ -20,8 +23,9 @@ module.exports = function (app) {
       .service("mailer")
       .create(email)
       .then(function (result) {
-        console.log("Sent email", result);
-        // return app.service('mails').create(result);
+        app
+          .service("mails-sent")
+          .create({ to: email.to, subject: email.subject });
       })
       .catch((err) => {
         console.log("Error sending email", err);
@@ -179,7 +183,6 @@ module.exports = function (app) {
           break;
 
         case "sendOrderConfirmation":
-         
           templatePath = path.join(
             emailAccountTemplatesPath,
             "order-confirmed.pug"
@@ -189,8 +192,7 @@ module.exports = function (app) {
             logo: logoLink,
             name: user.firstname || user.email,
             returnEmail,
-            orderId: user.orderId
-           
+            orderId: user.orderId,
           });
           email = {
             from: "Michoro Art info@michoro.com",
@@ -200,7 +202,7 @@ module.exports = function (app) {
           };
           sms = {
             from: "MICHOROART",
-            to: user.paying ,
+            to: user.paying,
             message: `Your order has been placed successfully.Your Order ID is ${user.orderId}. Keep this as it will be used to identify the order you placed`,
           };
 
