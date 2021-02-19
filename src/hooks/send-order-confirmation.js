@@ -6,11 +6,15 @@ module.exports = (options = {}) => {
   return async (context) => {
     const { result, app } = context;
 
-    result.arts.map((art) => {
+//     result.arts.map((art) => {
+// console.log(art)
+//       // return app.service("arts").patch(art, { isSold: true });
+//     });
+    result.arts.forEach(function (item, index) {
       return app.service("arts").patch(art, { isSold: true });
     });
     // await app.service('arts').patch(result.art)
-    console.log(result);
+    // console.log(result);
     return context;
   };
 };

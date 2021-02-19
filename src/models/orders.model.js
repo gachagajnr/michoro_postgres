@@ -57,6 +57,7 @@ module.exports = function (app) {
       },
       transaction_ref_no: {
         type: DataTypes.STRING,
+        unique:true
       },
     },
     {
