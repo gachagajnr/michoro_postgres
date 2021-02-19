@@ -1,11 +1,13 @@
 
 
+const processOrder = require('../../hooks/process-order');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [processOrder()],
     update: [],
     patch: [],
     remove: []
