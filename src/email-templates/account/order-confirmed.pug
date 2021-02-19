@@ -1,11 +1,16 @@
 doctype html
 html
-  body(style='margin: 0;font-family: Tahoma;font-size: 1.2em;background-color: #fea73c;')
+  body(style='margin: 0;font-family: Tahoma;font-size: 1.2em;background-color: #ECF0F1;')
     header.text-center(style='padding: 1em;background-color: #fea73c;margin-bottom: 1em;text-align: center;')
       .logo(style='max-width: 33.33%;')
         img(src=logo)
     .body(style='padding: 1em;margin-right: auto;margin-left: auto;max-width: 500px;color: #fea73c;')
-      h1(style='font-family: Palatino;font-size: 1.5em;') Hi, #{name} 
-      h1(style='font-family: Palatino;font-size: 1.5em;') Your Order ID #{orderId}
-      p(style="color: #34495E;")
-        | Your order at Michoro Art has been placed, Keep this order ID as it will be use to track delivery of your order.
+      h1(style='font-family: Palatino;font-size: 1.5em;') Hi, #{name} #{email}
+      h2(style='font-family: Palatino;font-size: 1.5em;') Order Id, #{order}
+      p(style="color: #000;")
+        | Your order 
+      p(style="color: #000;")
+        | At Michoro Art has been placed, Keep this order ID as it will be use to track delivery of your order.
+      p.text-small.margin-2(style='color: grey;font-size: 0.9em;text-align: center;margin-bottom: 0;margin-top: 2em;') If you didn't request this change please
+      p.text-small(style='color: grey;font-size: 0.9em;text-align: center;margin-bottom: 0;')
+        a(href='mailto:' + returnEmail + '?subject=I did not sign up at this site&body=Someone unauthorized signed up with my email.', style='color: #2980B9;') let us know

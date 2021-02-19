@@ -28,7 +28,7 @@ module.exports = function (app) {
           .create({ to: email.to, subject: email.subject });
       })
       .catch((err) => {
-        console.log("Error sending email", err);
+        console.log("Error sending email", err.message);
       });
   }
 
@@ -183,6 +183,7 @@ module.exports = function (app) {
           break;
 
         case "sendOrderConfirmation":
+          console.log("IDDDDDDDDDDDDDDDDDD", user.orderId);
           templatePath = path.join(
             emailAccountTemplatesPath,
             "order-confirmed.pug"
@@ -190,9 +191,10 @@ module.exports = function (app) {
 
           compiledHTML = pug.compileFile(templatePath)({
             logo: logoLink,
-            name: user.firstname || user.email,
+            name: user.firstname,
+            email: user.email,
+            order: user.orderId,
             returnEmail,
-            orderId: user.orderId,
           });
           email = {
             from: "Michoro Art info@michoro.com",
