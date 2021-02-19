@@ -7,8 +7,8 @@ module.exports = (options = {}) => {
   return async (context) => {
     const { result, app } = context;
    
-    result.arts.forEach(function (item, index) {
-      // return app.service("arts").patch(item, { isSold: true });
+    result.arts.forEach(async function (item, index) {
+      await app.service("arts").patch(item, { isSold: true });
     });
    
 

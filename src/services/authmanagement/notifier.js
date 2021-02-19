@@ -183,7 +183,6 @@ module.exports = function (app) {
           break;
 
         case "sendOrderConfirmation":
-          console.log("IDDDDDDDDDDDDDDDDDD", user.orderId);
           templatePath = path.join(
             emailAccountTemplatesPath,
             "order-confirmed.pug"
