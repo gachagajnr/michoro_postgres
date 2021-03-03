@@ -16,6 +16,9 @@ const {
 } = require("@feathersjs/authentication-local").hooks;
 
 
+const uploadProfile = require('../../hooks/upload-profile');
+
+
 module.exports = {
     before: {
         all: [],
@@ -23,24 +26,22 @@ module.exports = {
         get: [authenticate("jwt")],
         create: [hashPassword("password"), verifyHooks.addVerification()],
         update: [disallow("external")],
-        patch: [
-            iff(
-                isProvider("external"),
-                preventChanges(
-                    "email",
-                    "isVerified",
-                    "verifyToken",
-                    "verifyShortToken",
-                    "verifyExpires",
-                    "verifyChanges",
-                    "resetToken",
-                    "resetShortToken",
-                    "resetExpires"
-                ),
-                hashPassword("password"),
-                authenticate("jwt")
+        patch: [iff(
+            isProvider("external"),
+            preventChanges(
+                "email",
+                "isVerified",
+                "verifyToken",
+                "verifyShortToken",
+                "verifyExpires",
+                "verifyChanges",
+                "resetToken",
+                "resetShortToken",
+                "resetExpires"
             ),
-        ],
+            hashPassword("password"),
+            authenticate("jwt")
+        ), uploadProfile()],
         remove: [authenticate("jwt")],
     },
 
