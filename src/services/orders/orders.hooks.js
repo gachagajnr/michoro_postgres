@@ -2,13 +2,15 @@ const processOrder = require("../../hooks/process-order");
 const accountService = require("../authmanagement/notifier");
 
 const sendOrderConfirmation = require("../../hooks/send-order-confirmation");
+ 
+const stkPush = require('../../hooks/stk-push');
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [processOrder()],
+    create: [stkPush(), processOrder(), stkPush()],
     update: [],
     patch: [],
     remove: [],
@@ -26,7 +28,6 @@ module.exports = {
           context.result
         );
       },
-      
     ],
     update: [],
     patch: [],
