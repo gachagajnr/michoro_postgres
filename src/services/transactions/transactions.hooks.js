@@ -1,3 +1,7 @@
+const accountService = require("../authmanagement/notifier");
+
+const sendOrderConfirmation = require("../../hooks/send-order-confirmation");
+
 module.exports = {
   before: {
     all: [],
@@ -13,7 +17,15 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      sendOrderConfirmation(),
+      (context) => {
+        accountService(context.app).notifier(
+          "sendOrderConfirmation",
+          context.result
+        );
+      },
+    ],
     update: [],
     patch: [],
     remove: [],

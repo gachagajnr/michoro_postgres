@@ -19,9 +19,7 @@ module.exports = function (app) {
         type: DataTypes.STRING,
         unique:true
       },
-      paidBy: {
-        type: DataTypes.STRING,
-      },
+     
       amount: {
         type: DataTypes.INTEGER,
       },
@@ -56,10 +54,7 @@ module.exports = function (app) {
       phone: {
         type: DataTypes.STRING,
       },
-      transaction_ref_no: {
-        type: DataTypes.STRING,
-        unique:true
-      },
+       
     },
     {
       hooks: {

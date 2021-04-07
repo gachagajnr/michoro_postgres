@@ -22,7 +22,7 @@ function defineAbilitiesFor(user) {
     can("create", ["mailing-list"]);
 
     can("read", ["arts"]);
-    can("read", ["transactions"]);
+    can("read", ["transactions","mails-list"]);
     can(["create", "update", "read"], "authManagement");
 
     if (user) {

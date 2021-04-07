@@ -4,16 +4,11 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
   return async (context) => {
-    // var options = {
-    //   clientId: "Hwa3hKOJs0Jqcq_V1PXt5717T1FIVlE9tw6zlaX7aVM",
-    //   clientSecret: "hcpNu2eU6HrYAW3f1a50mQFTTo-px769Hms9oNE0zuA",
-    //   baseUrl: "https://sandbox.kopokopo.com",
-    //   apiKey: "S90UtGVt4BA1NY5Cq-R9r_uDOkjgLUnbMHmy558iO5A",
-    // };
+    const { result } = context;
 
     var options = {
       clientId: process.env.KOPOKOPO_CLIENT_ID,
-      clientSecret:process.env.KOPOKOPO_CLIENT_SECRET,
+      clientSecret: process.env.KOPOKOPO_CLIENT_SECRET,
       baseUrl: process.env.KOPOKOPO_BASE_URL,
       apiKey: process.env.KOPOKOPO_API_KEY,
     };
@@ -24,20 +19,20 @@ module.exports = (options = {}) => {
     token_details = res.access_token;
 
     var stkOptions = {
-      paymentChannel: "M-PESA STK Push",
-      tillNumber: "K943994",
-      firstName: "pius",
-      lastName: "gachaga",
-      phoneNumber: "+254706335880",
-      email: "williampius17@gmail.com",
-      currency: "KES",
+      paymentChannel: process.env.CHANNEL,
+      tillNumber: process.env.TILL_NUMBER,
+      firstName: result.firstname,
+      lastName: result.lastname,
+      phoneNumber: result.paying,
+      email: result.email,
+      currency: process.env.CURRENCY,
       amount: 1,
-      callbackUrl: "http://localhost:3030/instagram",
+      callbackUrl: "https://7d9bda98f2ae.ngrok.io/instagram",
       accessToken: token_details,
       metadata: {
-        customerId: "123456789",
-        reference: "123456",
-        notes: "Payment for invoice 123456",
+        orderPurchased: result.arts,
+        orderId: result.orderId,
+        email: result.email,
       },
     };
     if (token_details === null) throw new Error("An Error Occurred");

@@ -15,48 +15,42 @@ module.exports = function (app) {
         isUUID: 4,
         defaultValue: Sequelize.UUIDV4,
       },
-      service_name: {
-        type: DataTypes.STRING,
-      },
-      business_number: {
-        type: DataTypes.STRING,
-      },
-      transaction_reference: {
-        type: DataTypes.STRING,
-        unique: true,
-      },
-      internal_transaction_id: {
-        type: DataTypes.STRING,
-      },
-      transaction_timestamp: {
-        type: DataTypes.STRING,
-      },
-      transaction_type: {
-        type: DataTypes.STRING,
-      },
-      account_number: {
-        type: DataTypes.STRING,
-      },
-      sender_phone: {
-        type: DataTypes.STRING,
-      },
-      first_name: {
-        type: DataTypes.STRING,
-      },
-      middle_name: {
-        type: DataTypes.STRING,
-      },
-      last_name: {
+      transaction_id: {
         type: DataTypes.STRING,
       },
       amount: {
         type: DataTypes.STRING,
       },
+      status: {
+        type: DataTypes.STRING,
+      
+      },
       currency: {
         type: DataTypes.STRING,
       },
-      signature: {
+      system: {
         type: DataTypes.STRING,
+      },
+      reference: {
+        type: DataTypes.STRING,
+      },
+      till_number: {
+        type: DataTypes.STRING,
+      },
+      origination_time: {
+        type: DataTypes.STRING,
+      },
+      sender_first_name: {
+        type: DataTypes.STRING,
+      },
+      sender_last_name: {
+        type: DataTypes.STRING,
+      },
+      sender_phone_number: {
+        type: DataTypes.STRING,
+      },
+      metadata: {
+        type: DataTypes.JSON,
       },
     },
     {

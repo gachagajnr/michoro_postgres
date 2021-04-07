@@ -19,11 +19,12 @@ module.exports = function (app) {
     }
   }
   async function sendEmail(email) {
-    return await app
+    console.log(email);
+    await app
       .service("mailer")
       .create(email)
       .then(function (result) {
-        app
+        return app
           .service("mails-sent")
           .create({ to: email.to, subject: email.subject });
       })
@@ -183,6 +184,7 @@ module.exports = function (app) {
           break;
 
         case "sendOrderConfirmation":
+          console.log(user.metadata.email);
           templatePath = path.join(
             emailAccountTemplatesPath,
             "order-confirmed.pug"
@@ -190,21 +192,21 @@ module.exports = function (app) {
 
           compiledHTML = pug.compileFile(templatePath)({
             logo: logoLink,
-            name: user.firstname,
-            email: user.email,
-            order: user.orderId,
+            name: user.sender_first_name,
+            email: user.metadata.email,
+            order: user.metadata.orderId,
             returnEmail,
           });
           email = {
             from: "Michoro Art info@michoro.com",
-            to: [user.email],
+            to:[ user.metadata.email],
             subject: `Your order at Michoro Art has been placed`,
             html: compiledHTML,
           };
           sms = {
             from: "MICHOROART",
-            to: user.paying,
-            message: `Your order has been placed successfully.Your Order ID is ${user.orderId}. Keep this as it will be used to identify the order you placed`,
+            to: user.sender_phone_number,
+            message: `Your order has been placed successfully.Your Order ID is ${user.metadata.orderId}. Keep this as it will be used to identify the order you placed`,
           };
 
           return sendEmail(email) && sendSms(sms);
