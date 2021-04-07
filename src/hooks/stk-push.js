@@ -12,10 +12,10 @@ module.exports = (options = {}) => {
     // };
 
     var options = {
-      clientId: "05FkVvDOn6ZVxQlQwW8r4DlcMsA1RzjdCUBmOyHZNxM",
-      clientSecret: "UhZaH3TrgU1OamuLllpRVpb-Y9SISS364l3trW4G6hM",
-      baseUrl: "https://api.kopokopo.com",
-      apiKey: "ef52a35be2aa62dc1f4fab2bdada170c5b72482e",
+      clientId: process.env.KOPOKOPO_CLIENT_ID,
+      clientSecret:process.env.KOPOKOPO_CLIENT_SECRET,
+      baseUrl: process.env.KOPOKOPO_BASE_URL,
+      apiKey: process.env.KOPOKOPO_API_KEY,
     };
 
     var K2 = require("k2-connect-node")(options);
@@ -28,7 +28,7 @@ module.exports = (options = {}) => {
       tillNumber: "K943994",
       firstName: "pius",
       lastName: "gachaga",
-      phoneNumber: "+254705488128",
+      phoneNumber: "+254706335880",
       email: "williampius17@gmail.com",
       currency: "KES",
       amount: 1,
