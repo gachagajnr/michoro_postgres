@@ -3,7 +3,7 @@ module.exports = function (app) {
   app.post('/instagram', (req, res) =>{
     const transaction_service = app.service('transactions');
     let trans=req.body
-    // console.log("AAAAAAAAAAAAAAAAAAA", res.location);
+    console.log("AAAAAAAAAAAAAAAAAAA", trans);
      
     console.log("BODY DATA",req.body.data);
     console.log("ATTRIBUTES",req.body.data.attributes);
