@@ -27,7 +27,7 @@ module.exports = (options = {}) => {
       email: result.email,
       currency: process.env.CURRENCY,
       amount: 1,
-      callbackUrl: "https://7d9bda98f2ae.ngrok.io/instagram",
+      callbackUrl: "https://85324b475f5e.ngrok.io/instagram",
       accessToken: token_details,
       metadata: {
         orderPurchased: result.arts,

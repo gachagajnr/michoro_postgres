@@ -19,14 +19,13 @@ module.exports = function (app) {
     }
   }
   async function sendEmail(email) {
-    console.log(email);
-    await app
+     await app
       .service("mailer")
       .create(email)
       .then(function (result) {
         return app
           .service("mails-sent")
-          .create({ to: email.to, subject: email.subject });
+          .create({ to: email.to[0], subject: email.subject });
       })
       .catch((err) => {
         console.log("Error sending email", err.message);
@@ -200,7 +199,7 @@ module.exports = function (app) {
           email = {
             from: "Michoro Art info@michoro.com",
             to:[ user.metadata.email],
-            subject: `Your order at Michoro Art has been placed`,
+            subject: `Your order ${user.metadata.orderId} at Michoro Art has been placed`,
             html: compiledHTML,
           };
           sms = {
