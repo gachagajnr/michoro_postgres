@@ -3,7 +3,7 @@ module.exports = function (app) {
   app.post("/instagram", (req, res) => {
     let trans = req.body.data.attributes;
     let data = {};
-    // console.log("FROM KOPOPOKO",req.body.data.attributes.event.resource);
+ 
     if (req.body.data.attributes.status === "Success") {
       data = {
         transaction_id: trans.event.resource.id,
@@ -19,7 +19,7 @@ module.exports = function (app) {
         sender_phone_number: trans.event.resource.sender_phone_number,
         metadata: trans.metadata,
       };
-      // console.log("DATA",data);
+   
       app
         .service("transactions")
         .create(data)

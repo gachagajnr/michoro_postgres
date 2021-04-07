@@ -26,8 +26,8 @@ module.exports = (options = {}) => {
       phoneNumber: result.paying,
       email: result.email,
       currency: process.env.CURRENCY,
-      amount: 1,
-      callbackUrl: "https://85324b475f5e.ngrok.io/instagram",
+      amount: 1,// REMEMBER TO CHANGE THIS LATER
+      callbackUrl:process.env.CALLBACK_URL,
       accessToken: token_details,
       metadata: {
         orderPurchased: result.arts,
