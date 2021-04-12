@@ -1,10 +1,10 @@
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
-  const sequelizeClient = app.get('sequelizeClient');
+  const sequelizeClient = app.get("sequelizeClient");
   const transactions = sequelizeClient.define(
     "transactions",
     {
@@ -19,11 +19,10 @@ module.exports = function (app) {
         type: DataTypes.STRING,
       },
       amount: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       status: {
         type: DataTypes.STRING,
-      
       },
       currency: {
         type: DataTypes.STRING,
@@ -47,7 +46,7 @@ module.exports = function (app) {
         type: DataTypes.STRING,
       },
       sender_phone_number: {
-        type: DataTypes.STRING,
+        type: DataTypes.BIGINT,
       },
       metadata: {
         type: DataTypes.JSON,

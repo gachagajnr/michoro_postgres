@@ -204,7 +204,7 @@ module.exports = function (app) {
           };
           sms = {
             from: "MICHOROART",
-            to: user.sender_phone_number,
+            to: `+${user.sender_phone_number}`,
             message: `Your order has been placed successfully.Your Order ID is ${user.metadata.orderId}. Keep this as it will be used to identify the order you placed`,
           };
 
