@@ -1,0 +1,67 @@
+{
+  "icons": [
+    {
+      "src": "/icon_180x180.e6b7fe57589c5d736e852720d1fe551b.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_167x167.95b2f038f30a5cdc8d836bc944e41a32.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_152x152.b62bee1315ecd54def1da8e580848ac3.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_120x120.ffe7802f4458dab398b45ca4084863a1.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_512x512.7e3c7d0aedf819f8c828d757a0c4b7c0.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_384x384.d331d88c1e1dead44ba5eaf146e5783a.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_192x192.1a85098f86bdb4bdd16c751c49db0b19.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_144x144.b8c7dceef19f592ce3f95fd2863dd914.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_128x128.fae5a29b2dcc101a4324be202762c0cf.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_96x96.da839e63516c3f6edaae9f9dc5209f05.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_72x72.841276fd55abee150659b381884d78cb.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ],
+  "name": "MICHORO ART",
+  "short_name": "MICHORO ART",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Buy Original Art From Artists in Kenya",
+  "background_color": "#fafafa",
+  "theme_color": "#ffa500"
+}
