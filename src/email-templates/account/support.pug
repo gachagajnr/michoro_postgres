@@ -1,0 +1,23 @@
+doctype html
+html
+  body(style='margin: 0;font-family: Tahoma;font-size: 1.2em;background-color: #ECF0F1;')
+    header.text-center(style='padding: 1em;background-color: #fea73c;margin-bottom: 1em;text-align: center;')
+      .logo(style='max-width: 33.33%;')
+        img(src=logo)
+    .body(style='padding: 1em;margin-right: auto;margin-left: auto;max-width: 500px;color: #000;')
+      h6(style='font-family: Palatino;font-size: 1em;') Name: #{name} 
+      h6(style='font-family: Palatino;font-size: 1em;') I am: #{iam}
+      h6(style='font-family: Palatino;font-size: 1em;') Email: #{email}
+      h6(style='font-family: Palatino;font-size: 1em;') Phone: #{phone}
+      h6(style='font-family: Palatino;font-size: 1em;') Question: #{question}
+      h6(style='font-family: Palatino;font-size: 1em;') Description: #{description}
+      h6(style='font-family: Palatino;font-size: 1em;') Subject: #{subject}
+
+
+      p(style="color: #000;")
+        | Support  
+      p(style="color: #000;")
+        | At Michoro Art.
+      p.text-small.margin-2(style='color: grey;font-size: 0.9em;text-align: center;margin-bottom: 0;margin-top: 2em;') If you didn't request this change please
+      p.text-small(style='color: grey;font-size: 0.9em;text-align: center;margin-bottom: 0;')
+        a(href='mailto:' + returnEmail + '?subject=I did not sign up at this site&body=Someone unauthorized signed up with my email.', style='color: #2980B9;') let us know

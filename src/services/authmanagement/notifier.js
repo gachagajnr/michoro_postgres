@@ -19,7 +19,7 @@ module.exports = function (app) {
     }
   }
   async function sendEmail(email) {
-     await app
+    await app
       .service("mailer")
       .create(email)
       .then(function (result) {
@@ -35,7 +35,7 @@ module.exports = function (app) {
   return {
     notifier: function (type, user, notifierOptions) {
       let hashLink;
-      var logoLink = "https://michoroarts.s3.us-east-2.amazonaws.com/logo.png";
+      var logoLink = process.env.LOGOLINK;
       let email, sms;
       var emailAccountTemplatesPath = path.join(
         app.get("src"),
@@ -183,7 +183,6 @@ module.exports = function (app) {
           break;
 
         case "sendOrderConfirmation":
-          console.log(user.metadata.email);
           templatePath = path.join(
             emailAccountTemplatesPath,
             "order-confirmed.pug"
@@ -198,7 +197,7 @@ module.exports = function (app) {
           });
           email = {
             from: "Michoro Art info@michoro.com",
-            to:[ user.metadata.email],
+            to: [user.metadata.email],
             subject: `Your order ${user.metadata.orderId} at Michoro Art has been placed`,
             html: compiledHTML,
           };
@@ -210,6 +209,31 @@ module.exports = function (app) {
 
           return sendEmail(email) && sendSms(sms);
           break;
+        case "contactSupport":
+          templatePath = path.join(
+            emailAccountTemplatesPath,
+            "support.pug"
+          );
+          compiledHTML = pug.compileFile(templatePath)({
+            logo: logoLink,
+            name: user.name,
+            iam: user.iam,
+            email: user.email,
+            question: user.question,
+            subject: user.subject,
+            description: user.description,
+            phone: user.phone,
+            returnEmail,
+          });
+          email = {
+            from: "Michoro Art support@michoro.com",
+            to: ["michoro.ke@gmail.com"],
+            subject: `Query is ${user.question} `,
+            html: compiledHTML,
+          };
+
+          return sendEmail(email);
+
         default:
           break;
       }

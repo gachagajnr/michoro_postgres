@@ -26,7 +26,7 @@ module.exports = (options = {}) => {
       phoneNumber: result.paying,
       email: result.email,
       currency: process.env.CURRENCY,
-      amount: 1, // REMEMBER TO CHANGE THIS LATER
+      amount: result.amount,  
       callbackUrl: process.env.CALLBACK_URL,
       accessToken: token_details,
       metadata: {
@@ -39,10 +39,10 @@ module.exports = (options = {}) => {
 
     K2.StkService.initiateIncomingPayment(stkOptions)
       .then((response) => {
-        console.log("STK RESPONSE", response);
+        // console.log("STK RESPONSE", response);
       })
       .catch((error) => {
-        console.log("STK ERROR", error);
+        // console.log("STK ERROR", error);
       });
     return context;
   };
