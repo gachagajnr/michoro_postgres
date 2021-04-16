@@ -14,6 +14,8 @@ const authorResolver = {
           paginate: false,
         })
       )[0]),
+    uri: () => async (art, context) =>
+      (art.uri = process.env.BUCKET + `/${art.art}`),
   },
 };
 const moreResolver = {
@@ -22,7 +24,7 @@ const moreResolver = {
       (art.moreWorks = await context.app.service("arts").find({
         query: {
           userId: art.userId,
-          
+
           //paginate: false
         },
       })),
@@ -34,6 +36,8 @@ const moreResolver = {
           //paginate: false
         },
       })),
+    //GENERATE URI WITH BUCKET LINK AND ART.ART
+    // uri: () => async (art, context) => (art.uri = "process.env.BUCKET" + art.art),
   },
 };
 module.exports = {
