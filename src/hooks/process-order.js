@@ -10,8 +10,7 @@ module.exports = (options = {}) => {
     }
 
     function getUniqueID() {
-      for (var i = 0; i < 5; i++)
-        return Date.now() + (Math.random() * 100000).toFixed();
+      return Math.floor(Math.random() * 899999 + 100000);
     }
 
     context.data = {
