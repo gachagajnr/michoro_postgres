@@ -24,7 +24,7 @@ const moreResolver = {
       (art.moreWorks = await context.app.service("arts").find({
         query: {
           userId: art.userId,
-
+          visibleToPublic: true,
           //paginate: false
         },
       })),
@@ -32,6 +32,7 @@ const moreResolver = {
       (art.topPicks = await context.app.service("arts").find({
         query: {
           $or: [{ category: art.category }, { price: art.price }],
+          visibleToPublic: true,
           // author: art.author,
           //paginate: false
         },
